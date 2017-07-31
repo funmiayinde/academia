@@ -1,0 +1,76 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Menu</h1>
+      </ion-header-bar>
+    </ion-nav-bar>
+    <ion-view title="Menu">
+      <ion-content padding="'false'" class="has-header">
+        <ion-slide-box auto-play="true" does-continue="true" show-pager="true">
+          <ion-slide class="swiper-slide swiper-slide-active" style="width:100%; height: 50%;"
+                     ng-repeat="slide in slide_items">
+            <div>
+              <img ng-src="{{'img/'+ slide.p_image_id +'.jpg'}}">
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Search for book..." ng-model="q" style="width:500px">
+          </label>
+        </div>
+        <!--<div class="button-bar">-->
+        <!--<a href="" class="button button-stable button-block  icon-left ion-android-funnel">Filter</a>-->
+        <!--<a href="" class="button button-stable button-block">Sort</a>-->
+        <!--</div>-->
+
+        <ion-list>
+          <br/>
+          <ion-item class="item-thumbnail-left" ng-repeat="books in books_details | filter:q">
+            <img ng-src="{{books.cover_path}}">
+            <h2>{{books.title}}</h2>
+            <p>Price: &#8377; {{books.price}}</p>
+            <span style="font-size: 12px">{{books.description}}....</span>
+            <p style="position:absolute;right:10px;">
+              <button class="button" style="width:80px;background: none; font-size: 12px; border: 1px solid black;
+                position: relative; height:2px;border-radius: 60px;margin-left: 20px; color:green">Purchase
+              </button>
+            <p></p>
+            <button ng-click="view_book(books._id)" class="button" style="width:80px;  background: none; border: 1px solid black;
+            position: relative; height:2px;border-radius: 10px;margin-left: 20px; color:green">Preview
+            </button>
+            </p>
+          </ion-item>
+
+          <p></p>
+
+        </ion-list>
+
+        <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%">
+          <ion-infinite-scroll-content loadingSpinner="bubbles">
+        </ion-infinite-scroll>
+      </ion-content>
+
+    </ion-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" style="background-image: url('../img/background1.jpg')">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item style="background-image: url('../img/background1.jpg'); color: #ffffff" ng-click="books()" menu-close>Books</ion-item>
+        <ion-item style="background-image: url('../img/background1.jpg'); color: #ffffff" ng-click="article()" menu-close>Article</ion-item>
+        <ion-item style="background-image: url('../img/background1.jpg'); color: #ffffff" menu-close ng-click="logout()">Logout</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

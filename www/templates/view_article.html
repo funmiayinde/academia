@@ -1,0 +1,24 @@
+<ion-header-bar class="bar-stable">
+  <h1 class="title">Article</h1>
+</ion-header-bar>
+<ion-view title="Article">
+  <ion-content padding="'true'" class="has-header">
+    <div class="list card" style="margin-top: 1px;">
+      <div class="item item-divider"><p><strong >Title:</strong> {{articles.title}}</p></div>
+      <div class="item item-body">
+        <div class="item item-text-wrap" ng-bind-html="articles.article">
+          <p >{{articles.article}}</p>
+        </div>
+      </div>
+      <div class="button-bar">
+        <button class="button button-assertive button-clear button-block  icon ion-android-favorite-outline"></button>
+      </div>
+    </div>
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="add your comment" ng-model="comment" style="width:500px">
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
+<!--</ion-side-menus>-->
